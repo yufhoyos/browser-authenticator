@@ -64,6 +64,7 @@ $('.js-verify').addEventListener('click', function () {
       msg = 'FAIL!';
     }
 
+    console.info('verify', msg);
     window.alert(msg);
   });
 });
