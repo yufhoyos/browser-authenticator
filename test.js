@@ -15,11 +15,22 @@ function generate(ke) {
     var companyName = $('.js-company-name').value;
     var userAccount = $('.js-user-account').value;
 
-    // obviously don't use this in production, but it's not so bad for the demo
+    /*
+    var otpauth = 'otpauth://totp/'
+      + encodeURI(companyName) + ':' + encodeURI(userAccount)
+      + '?secret=' + key.replace(/\s+/g, '').toUpperCase()
+      ;
     var otpauth = encodeURI('otpauth://totp/'
       + companyName + ':' + userAccount
       + '?secret=') + key.replace(/\s+/g, '').toUpperCase()
       ;
+    */
+    // TODO figure out the right escaping
+    var otpauth = 'otpauth://totp/'
+      + companyName + ':' + userAccount
+      + '?secret=' + key.replace(/\s+/g, '').toUpperCase()
+      ;
+    // obviously don't use this in production, but it's not so bad for the demo
     var src = 'https://www.google.com/chart?chs=166x166&chld=L|0&cht=qr&chl=' + encodeURIComponent(otpauth);
 
     $('.js-otpauth').innerHTML = otpauth; // safe to inject because I created it
