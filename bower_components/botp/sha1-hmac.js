@@ -12,7 +12,7 @@ exports.sha1Hmac = function (key, bytes) {
 
   var Unibabel = window.Unibabel;
 
-  if (window.crypto) {
+  if (window.crypto && window.crypto.subtle) {
     return (window.crypto.subtle||window.crypto.webkitSubtle).importKey(
       "raw"
     , key
