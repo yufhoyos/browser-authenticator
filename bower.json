@@ -1,6 +1,6 @@
 {
   "name": "authenticator",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "homepage": "https://github.com/Daplie/browser-authenticator",
   "authors": [
     "AJ ONeal <awesome@coolaj86.com>"
@@ -33,5 +33,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "botp": "~3.0.1",
+    "forge": "~0.6.37",
+    "unibabel": "~2.1.0"
+  }
 }
