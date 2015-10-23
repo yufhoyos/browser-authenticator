@@ -16,16 +16,13 @@ function generate(ke) {
     var userAccount = $('.js-user-account').value;
 
     // obviously don't use this in production, but it's not so bad for the demo
-    var src = 'https://www.google.com/chart?chs=166x166&chld=L|0&cht=qr&chl='
-      + encodeURIComponent(
-          'otpauth://totp/'
-        + encodeURIComponent(companyName)
-        + ':'
-        + encodeURIComponent(userAccount)
-        + '?secret='
-        + key.replace(/\s+/g, '').toUpperCase()
-      );
+    var otpauth = 'otpauth://totp/'
+      + encodeURIComponent(companyName) + ':' + encodeURIComponent(userAccount)
+      + '?secret=' + key.replace(/\s+/g, '').toUpperCase()
+      ;
+    var src = 'https://www.google.com/chart?chs=166x166&chld=L|0&cht=qr&chl=' + encodeURIComponent(otpauth);
 
+    $('.js-otpauth').innerHTML = otpauth; // safe to inject because I created it
     $('.js-key').innerHTML = key; // safe to inject because I created it
     $('img.js-qrcode').src = src;
 
