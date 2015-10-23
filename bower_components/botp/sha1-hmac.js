@@ -26,7 +26,7 @@ exports.sha1Hmac = function (key, bytes) {
   function useWebCrypto() {
     return (window.crypto.subtle||window.crypto.webkitSubtle).importKey(
       "raw"
-    , key.buffer
+    , key
     , {  name: "HMAC"
       , hash: { name: "SHA-1" }
       }
@@ -51,10 +51,10 @@ exports.sha1Hmac = function (key, bytes) {
       ["sign", "verify"] //can be any combination of "sign" and "verify"
     )
     */
-    .then(function (key) {
+    .then(function (cryptoKey) {
       return (window.crypto.subtle||window.crypto.webkitSubtle).sign(
         { name: "HMAC" }
-      , key  // from generateKey or importKey above
+      , cryptoKey  // from generateKey or importKey above
       , new Uint8Array(bytes) // ArrayBuffer of data you want to sign
       )
       .then(function(signature){
