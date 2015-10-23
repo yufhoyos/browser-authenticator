@@ -1,0 +1,37 @@
+{
+  "name": "authenticator",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Daplie/browser-authenticator",
+  "authors": [
+    "AJ ONeal <awesome@coolaj86.com>"
+  ],
+  "description": "Two- / Multi- Factor Authenication (2FA / MFA) for browser JavaScript",
+  "main": "authenticator.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "authenticator",
+    "2fa",
+    "mfa",
+    "token",
+    "key",
+    "base32",
+    "code",
+    "generator",
+    "one-time",
+    "time-based",
+    "authy",
+    "google",
+    "microsoft"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
