@@ -18,6 +18,11 @@ This module uses [`botp`](https://github.com/Daplie/botp) which implements `TOTP
 (the *Authenticator* standard), which is based on `HOTP` [(RFC 4226)](https://www.ietf.org/rfc/rfc4226.txt)
 to provide codes that are exactly compatible with all other *Authenticator* apps and services that use them.
 
+Demo
+====
+
+<https://daplie.github.io/browser-authenticator/>
+
 Usage
 =====
 
