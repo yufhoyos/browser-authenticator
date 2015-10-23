@@ -17,11 +17,11 @@ if (!window.crypto) {
 // Generate a key
 function generateOtpKey() {
   // 20 cryptographically random binary bytes (160-bit key)
-  if (window.crypto) {
+  try {
     var key = window.crypto.getRandomValues(new Uint8Array(20));
 
     return Promise.resolve(key);
-  } else {
+  } catch(e) {
     // Promises are supported even in Microsoft Edge
     // only old IE and old android need shims
     return new Promise(function (resolve, reject) {

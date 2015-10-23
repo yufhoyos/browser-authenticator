@@ -95,7 +95,6 @@ exports.base32ToBuffer = function(encoded) {
     } else {
         decoded = new Array(len);
     }
-    console.log('debug mobile safari: decoded', decoded);
 
     /* byte by byte isn't as pretty as octet by octet but tests a bit
         faster. will have to revisit. */
@@ -133,13 +132,9 @@ exports.base32ToBuffer = function(encoded) {
         }
     }
 
-    console.log('debug mobile safari: decoded 2', decoded);
-    if (decoded.slice) {
-      console.log('debug mobile safari: decoded 3a', decoded);
+    if (decoded.slice) { // Array or TypedArray
       return decoded.slice(0, plainPos);
-    } else {
-      console.log('debug mobile safari: decoded 3b', decoded);
-      // Mobile Safari's Uint8Array doesn't have slice
+    } else { // Mobile Safari TypedArray
       return new Uint8Array(Array.prototype.slice.call(decoded, 0, plainPos));
     }
 };

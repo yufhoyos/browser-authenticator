@@ -12,7 +12,18 @@ exports.sha1Hmac = function (key, bytes) {
 
   var Unibabel = window.Unibabel;
 
-  if (window.crypto) {
+  function useForge() {
+    var forge = window.forge;
+    var hmac = forge.hmac.create();
+    var digest;
+    hmac.start('sha1', Unibabel.bufferToBinaryString(key));
+    hmac.update(Unibabel.bufferToBinaryString(bytes));
+    digest = hmac.digest().toHex();
+
+    return window.Promise.resolve(digest);
+  }
+
+  function useWebCrypto() {
     return (window.crypto.subtle||window.crypto.webkitSubtle).importKey(
       "raw"
     , key.buffer
@@ -52,15 +63,29 @@ exports.sha1Hmac = function (key, bytes) {
       });
     });
   }
-  else if (window.forge) {
-    var forge = window.forge;
-    var hmac = forge.hmac.create();
-    var digest;
-    hmac.start('sha1', Unibabel.bufferToBinaryString(key));
-    hmac.update(Unibabel.bufferToBinaryString(bytes));
-    digest = hmac.digest().toHex();
 
-    return window.Promise.resolve(digest);
+  if (window.crypto) {
+    // WebCrypto is so unreliable right now... ugh...
+    try {
+      return useWebCrypto().then(function (result) {
+        return result;
+      }, function (err) {
+        console.warn(err);
+        console.warn(err.stack);
+        console.warn("WebCrypto failed, trying forge.js");
+
+        return useForge();
+      });
+    } catch(e) {
+      console.warn(e);
+      console.warn(e.stack);
+      console.warn("WebCrypto threw exception, trying forge.js");
+
+      return useForge();
+    }
+  }
+  else if (window.forge) {
+    return useForge();
   }
   else {
     throw new Error("WebCrypto or forge.js is required to create a sha1 hmac");
