@@ -37,9 +37,11 @@
       <button class="js-verify">Verify</button>
     </div>
 
-    <!-- base32 conversion (and binary string for forge) -->
+    <!-- these two are only needed for webcrypto shim -->
     <script src="bower_components/unibabel/index.js"></script>
     <script src="bower_components/unibabel/unibabel.hex.js"></script>
+
+    <!-- base32 conversion (and binary string for forge) (works standalone from the above) -->
     <script src="bower_components/unibabel/unibabel.base32.js"></script>
 
     <!-- forge.hmac -->

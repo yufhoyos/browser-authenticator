@@ -1,10 +1,9 @@
 (function (exports) {
 'use strict';
 
-var Authenticator = exports.Authenticator || exports;
-var Unibabel = window.Unibabel || require('unibabel');
-console.log('window.totp', window.totp);
-var totp = window.totp || require('notp').totp;
+var Authenticator = exports.Authenticator; // || exports;
+var Unibabel = window.Unibabel; // || require('unibabel');
+var totp = window.totp; // || require('notp').totp;
 
 if (!window.crypto) {
   document.addEventListener('mousemove', function (event) {
@@ -18,11 +17,13 @@ if (!window.crypto) {
 // Generate a key
 function generateOtpKey() {
   // 20 cryptographically random binary bytes (160-bit key)
-  if (false && window.crypto) {
+  if (window.crypto) {
     var key = window.crypto.getRandomValues(new Uint8Array(20));
 
     return Promise.resolve(key);
   } else {
+    // Promises are supported even in Microsoft Edge
+    // only old IE and old android need shims
     return new Promise(function (resolve, reject) {
       window.forge.random.getBytes(20, function (err, bytes) {
         if (err) {
@@ -39,7 +40,7 @@ function generateOtpKey() {
 // Text-encode the key as base32 (in the style of Google Authenticator - same as Facebook, Microsoft, etc)
 function encodeGoogleAuthKey(bin) {
   // 32 ascii characters without trailing '='s
-  var base32 = Unibabel.bufferToBase32(bin).replace(/=/g, '');
+  var base32 = (Unibabel||window).bufferToBase32(bin).replace(/=/g, '');
 
   // lowercase with a space every 4 characters
   var key = base32.toLowerCase().replace(/(\w{4})/g, "$1 ").trim();
@@ -55,7 +56,7 @@ function generateGoogleAuthKey() {
 function decodeGoogleAuthKey(key) {
   // decode base32 google auth key to binary
   var unformatted = key.replace(/\W+/g, '').toUpperCase();
-  var bin = Unibabel.base32ToBuffer(unformatted);
+  var bin = (Unibabel||window).base32ToBuffer(unformatted);
 
   return bin;
 }
