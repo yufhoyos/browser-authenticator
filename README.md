@@ -23,6 +23,8 @@ Demo
 
 <https://daplie.github.io/browser-authenticator/>
 
+You may also be interested in Node Authenticator over at https://github.com/Daplie/node-authenticator
+
 Usage
 =====
 
