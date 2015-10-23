@@ -66,6 +66,9 @@ $('.js-verify').addEventListener('click', function () {
 
     console.info('verify', msg);
     window.alert(msg);
+  }, function (err) {
+    console.error('ERROR');
+    console.error(err);
   });
 });
 
