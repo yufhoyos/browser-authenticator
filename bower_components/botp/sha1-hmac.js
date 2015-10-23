@@ -12,10 +12,10 @@ exports.sha1Hmac = function (key, bytes) {
 
   var Unibabel = window.Unibabel;
 
-  if (window.crypto && window.crypto.subtle) {
+  if (window.crypto) {
     return (window.crypto.subtle||window.crypto.webkitSubtle).importKey(
       "raw"
-    , key
+    , key.buffer
     , {  name: "HMAC"
       , hash: { name: "SHA-1" }
       }
