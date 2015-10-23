@@ -16,9 +16,9 @@ function generate(ke) {
     var userAccount = $('.js-user-account').value;
 
     // obviously don't use this in production, but it's not so bad for the demo
-    var otpauth = 'otpauth://totp/'
-      + encodeURIComponent(companyName) + ':' + encodeURIComponent(userAccount)
-      + '?secret=' + key.replace(/\s+/g, '').toUpperCase()
+    var otpauth = encodeURI('otpauth://totp/'
+      + companyName + ':' + userAccount
+      + '?secret=') + key.replace(/\s+/g, '').toUpperCase()
       ;
     var src = 'https://www.google.com/chart?chs=166x166&chld=L|0&cht=qr&chl=' + encodeURIComponent(otpauth);
 
