@@ -1,7 +1,7 @@
 (function (exports) {
 'use strict';
 
-var Authenticator = exports.Authenticator; // || exports;
+var Authenticator = exports.Authenticator || exports;
 var Unibabel = window.Unibabel; // || require('unibabel');
 var totp = window.totp; // || require('notp').totp;
 
