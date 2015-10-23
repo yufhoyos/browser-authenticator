@@ -13,7 +13,7 @@ exports.sha1Hmac = function (key, bytes) {
   var Unibabel = window.Unibabel;
 
   if (window.crypto) {
-    return window.crypto.subtle.importKey(
+    return (window.crypto.subtle||window.crypto.webkitSubtle).importKey(
       "raw"
     , key
     , {  name: "HMAC"
@@ -41,7 +41,7 @@ exports.sha1Hmac = function (key, bytes) {
     )
     */
     .then(function (key) {
-      return window.crypto.subtle.sign(
+      return (window.crypto.subtle||window.crypto.webkitSubtle).sign(
         { name: "HMAC" }
       , key  // from generateKey or importKey above
       , new Uint8Array(bytes) // ArrayBuffer of data you want to sign
