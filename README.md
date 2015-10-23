@@ -21,7 +21,9 @@ to provide codes that are exactly compatible with all other *Authenticator* apps
 Demo
 ====
 
-<https://daplie.github.io/browser-authenticator/>
+[Live Demo](https://daplie.github.io/browser-authenticator/) at <https://daplie.github.io/browser-authenticator/>
+
+You may also be interested in [Node Authenticator](https://github.com/Daplie/node-authenticator) over at <https://github.com/Daplie/node-authenticator>
 
 Usage
 =====
