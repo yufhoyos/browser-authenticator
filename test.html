@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BOTP Test</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Authenticator Test</h1>
+
+    <div>
+      Test with the <a href="https://www.authy.com/personal/mobile/" target="_blank">Authy App</a>.
+    </div>
+
+    <br />
+    <div>
+      <img alt="qrcode" class="js-qrcode" width="166" height="166" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+      <p>20-byte (160-bit) Base32 Key:</p>
+      <h3 class="js-key">xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx</h3>
+    </div>
+
+    <br />
+    <div>
+      <label>Company Name:</label>
+      <input class="js-company-name" type="text" placeholder="Company Name" />
+
+      <label>User Account:</label>
+      <input class="js-user-account" type="text" placeholder="User Account" />
+
+      <button class="js-generate">Regenerate</button>
+    </div>
+
+    <br />
+    <div>
+      <label>Verification Token:</label>
+      <input class="js-token" type="text" placeholder="ex: 000 000" />
+
+      <button class="js-verify">Verify</button>
+    </div>
+
+    <!-- base32 conversion (and binary string for forge) -->
+    <script src="bower_components/unibabel/index.js"></script>
+    <script src="bower_components/unibabel/unibabel.hex.js"></script>
+    <script src="bower_components/unibabel/unibabel.base32.js"></script>
+
+    <!-- forge.hmac -->
+    <script src="bower_components/forge/js/util.js"></script>
+    <script src="bower_components/forge/js/sha1.js"></script>
+    <script src="bower_components/forge/js/hmac.js"></script>
+
+    <!-- forge.random.getBytes -->
+    <script src="bower_components/forge/js/sha256.js"></script>
+    <script src="bower_components/forge/js/cipher.js"></script>
+    <script src="bower_components/forge/js/cipherModes.js"></script>
+    <script src="bower_components/forge/js/aes.js"></script>
+    <script src="bower_components/forge/js/prng.js"></script>
+    <script src="bower_components/forge/js/random.js"></script>
+
+    <!-- botp.totp -->
+    <script src="bower_components/botp/sha1-hmac.js"></script>
+    <script src="bower_components/botp/index.js"></script>
+
+    <!-- Authenticator -->
+    <script src="authenticator.js"></script>
+    <script src="test.js"></script>
+  </body>
+</html>
