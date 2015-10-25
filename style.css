@@ -1,0 +1,205 @@
+.col-xs-6 {
+    text-align: center;
+}
+
+.authenticator {
+    z-index: 2;
+    font-size: 32px;
+    line-height: 1.0556;
+    font-weight: 100;
+    letter-spacing: .023em;
+    text-align: center;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.left {
+    margin-top: 18%;
+    padding: 0 0 0 15%;
+}
+
+.qrcode {
+    z-index: 2;
+}
+
+.scan {
+    z-index: 2;
+    font-size: 13px;
+    line-height: 1.0556;
+    font-weight: 200;
+    letter-spacing: .023em;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.verify {
+    z-index: 2;
+    font-size: 13px;
+    line-height: 1.0556;
+    font-weight: 200;
+    letter-spacing: .023em;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+    margin-top: 20px;
+}
+
+.token-label {
+	font-size: 14px;
+    line-height: 1.0556;
+    font-weight: 200;
+    letter-spacing: .023em;
+    text-align: center;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+    margin-left: -100px;
+}
+
+input {
+	margin: 10px 10px 5px 0;
+    width: 165px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.0556;
+    font-weight: 200;
+    letter-spacing: .023em;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.btn {
+	background: -webkit-linear-gradient(#6D99ED, #7464ED);
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    border: none;
+    padding: 5px 20px;
+    vertical-align: inherit;
+}
+
+.btn:hover {
+    color: #fff;
+}
+
+.right {
+    margin-top:25%;
+    position: relative;
+}
+
+.iPhone {
+	max-width: 400px;
+    position: absolute;
+    top: -250px;
+    left: 17%;
+}
+
+.iframe {
+	width: 265px;
+    height: 450px;
+    border: none !important;
+    z-index: 2;
+}
+
+.logo {
+    background-image: url("daplie-logo.png");
+    background-repeat: no-repeat;
+    background-size: 200px 50px;
+    width: 200px;
+    height: 50px;
+    margin: 50px auto 0 auto;
+    line-height: 1.0556;
+    text-align: center;
+    z-index: 2;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.token-issuer {
+    margin-top: 50px;
+    z-index: 2;
+    font-size: 12px;
+    line-height: 1.0556;
+    font-weight: 200;
+    letter-spacing: .023em;
+    text-align: center;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.account-name {
+    margin-top: 80px;
+    z-index: 2;
+    font-size: 18px;
+    line-height: 1.0556;
+    font-weight: 200;
+    letter-spacing: .023em;
+    text-align: center;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+    margin-bottom: 10px;
+}
+
+.token-phone {
+    margin-top: 20px;
+    z-index: 2;
+    font-size: 48px;
+    line-height: 1.0556;
+    font-weight: 100;
+    letter-spacing: .043em;
+    text-align: center;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.countdown {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.bottom {
+    margin-top: 220px;
+}
+
+.wide {
+    width: 340px;
+}
+
+.console {
+    z-index: 2;
+    text-align: center;
+    font-size: 32px;
+    line-height: 1.0556;
+    font-weight: 100;
+    letter-spacing: .023em;
+    font-style: normal;
+    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.iframe-container {
+    max-width: 400px;
+    position: absolute;
+    top: -120px;
+    left: 17%;
+    width: 400px;
+    height: 600px;
+}
+
+.fade {
+  opacity: 0;
+}
+
+.in {
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+}

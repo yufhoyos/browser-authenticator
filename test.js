@@ -1,6 +1,12 @@
 // forgive the suckiness, but whatever
 (function (exports) {
-'use strict';
+  'use strict';
+
+  window.addEventListener("load", function () {
+
+    window.document.body.className += " in";
+
+  });
 
 var key;
 var Authenticator = exports.Authenticator;
