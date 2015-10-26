@@ -2,7 +2,7 @@
 
 Two- / Multi- Factor Authenication (2FA / MFA) for browser JavaScript
 
-![](http://i.imgur.com/sdvMdbo.png)
+[![](http://i.imgur.com/sdvMdbo.png)](https://daplie.github.io/browser-authenticator/)
 <!-- ![](https://blog.authy.com/assets/posts/authenticator.png) -->
 
 There are a number of apps that various websites use to give you 6-digit codes to increase security when you log in:
