@@ -29,7 +29,7 @@
   Plugin.prototype = {
     getTimeRemaining: function()
     {
-    
+
       var timeRemaining = this._secondsLeft(this.getElapsedTime());
       return  timeRemaining;
     },
@@ -55,15 +55,16 @@
         }
     },
 
-    start: function () {
-      this.startedAt = new Date();
+    start: function (date) {
+      this.updateInterval = 25;
+      this.startedAt = date || new Date();
       this._drawCountdownShape(Math.PI*3.5, true);
       this._drawCountdownLabel(0);
-      this.interval = setInterval(jQuery.proxy(this._draw, this), 1000);
+      this._interval = setInterval(jQuery.proxy(this._draw, this), this.updateInterval);
     },
 
     stop: function (cb) {
-      clearInterval(this.interval);
+      clearInterval(this._interval);
       if (cb) { cb(); }
     },
 
@@ -135,8 +136,14 @@
     },
 
     _draw: function () {
-      var secondsElapsed = Math.round((new Date().getTime() - this.startedAt.getTime())/1000),
-          endAngle = (Math.PI*3.5) - (((Math.PI*2)/this.settings.seconds) * secondsElapsed);
+      var secondsElapsed = Math.round((new Date().getTime() - this.startedAt.getTime())/1000);
+      var milisecondsElapsed = Math.round((Date.now() - this.startedAt.getTime()));
+      var whole = (Math.PI*2)/(this.settings.seconds * 1000);
+      var parts = milisecondsElapsed;
+      var endAngle = (Math.PI*3.5)
+        - ( (whole) * parts);
+      //console.log('endAngle', endAngle);
+
       this._clearRect();
       this._drawCountdownShape(Math.PI*3.5, false);
       if (secondsElapsed < this.settings.seconds) {

@@ -1,11 +1,52 @@
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="jquery-2.0.0.min.js" type="text/javascript"></script>
-<script src="jquery.countdown.js" type="text/javascript"></script>
-<div class="phone-screen">
-  <div class="logo"></div>
-  <div class="token-issuer uppercase">your token is:</div>
-  <div class="token-phone"> 123 456 </div>
-  <div id="countdown" class="countdown"></div>
-  <script src="countdown.js" type="text/javascript"></script>
-  <div class="account-name">john@example.com</div> 
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authenticator - Daplie, Inc</title>
+    <meta charset="UTF-8">
+    <!--meta name="viewport" content="width=device-width, user-scalable=no" /-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://chart.googleapis.com/ data:; child-src 'self'; object-src 'none'">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body class="fade">
+    <div class="phone-screen">
+      <div class="logo"></div>
+      <div class="token-issuer uppercase">your <span class="js-issuer">Company</span> token is:</div>
+      <div class="token-phone"> <span class="js-token">--- ---</span> </div>
+      <div class="js-countdown countdown"></div>
+      <div class="js-account-name account-name">123@abc.xyz</div>
+    </div>
+
+    <!-- extremely lightweight shim for hex conversion -->
+    <script src="bower_components/unibabel/index.js"></script>
+    <script src="bower_components/unibabel/unibabel.hex.js"></script>
+
+    <!-- base32 conversion (and binary string for forge) (works standalone from the above) -->
+    <script src="bower_components/unibabel/unibabel.base32.js"></script>
+
+    <!-- forge.hmac -->
+    <script src="bower_components/forge/js/util.js"></script>
+    <script src="bower_components/forge/js/sha1.js"></script>
+    <script src="bower_components/forge/js/hmac.js"></script>
+
+    <!-- forge.random.getBytes -->
+    <script src="bower_components/forge/js/sha256.js"></script>
+    <script src="bower_components/forge/js/cipher.js"></script>
+    <script src="bower_components/forge/js/cipherModes.js"></script>
+    <script src="bower_components/forge/js/aes.js"></script>
+    <script src="bower_components/forge/js/prng.js"></script>
+    <script src="bower_components/forge/js/random.js"></script>
+
+    <!-- botp.totp -->
+    <script src="bower_components/botp/sha1-hmac.js"></script>
+    <script src="bower_components/botp/index.js"></script>
+
+    <!-- Authenticator -->
+    <script src="authenticator.js"></script>
+
+    <script src="jquery-2.0.0.min.js" type="text/javascript"></script>
+    <script src="jquery.countdown.js" type="text/javascript"></script>
+
+    <!-- The Magic -->
+    <script src="countdown.js" type="text/javascript"></script>
+  </body>
+</html>

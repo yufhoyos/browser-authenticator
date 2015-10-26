@@ -3,7 +3,8 @@
   <head>
     <title>Authenticator - Daplie, Inc</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <!--meta name="viewport" content="width=device-width, user-scalable=no" /-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://chart.googleapis.com/ data:; child-src 'self'; object-src 'none'">
     <link rel="stylesheet" type="text/css" href="bootstrap-v3.3.5.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
@@ -25,10 +26,10 @@
         </div>
 
         <div class="col-xs-6 right">
+          <img class="iPhone" src="iPhoneMockup.png" />
           <div class="iframe-container">
-            <iframe class="iframe" src="phone.html"></iframe>
+            <iframe class="js-otp-iframe iframe" src="phone.html"></iframe>
           </div>
-            <img class="iPhone" src="iPhoneMockup.png" />
         </div>
       </div>
     </div>
@@ -55,7 +56,7 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">Key:</label>
               <div class="col-sm-9">
-                <input type="text" class="js-key base-key-input wide" value="xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx">
+                <input type="text" class="js-key base-key-input wide">
               </div>
             </div>
             <div class="form-group">
@@ -64,9 +65,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label">URL:</label>
+              <label class="col-sm-3 control-label">URI:</label>
               <div class="col-sm-9">
-                <p class="js-otpauth">otpauth://totp/company:user?secret=xxxx</p>
+                <p class="js-otpauth">otpauth://totp/company:user?secret=xxxx&amp;issuer=company</p>
               </div>
             </div>
           </form>

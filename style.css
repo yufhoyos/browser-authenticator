@@ -14,7 +14,7 @@
 }
 
 .left {
-    margin-top: 18%;
+    margin-top: 170px;
     padding: 0 0 0 15%;
 }
 
@@ -45,13 +45,13 @@
 
 .token-label {
 	font-size: 14px;
-    line-height: 1.0556;
-    font-weight: 200;
-    letter-spacing: .023em;
-    text-align: center;
-    font-style: normal;
-    font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
-    margin-left: -100px;
+  line-height: 1.0556;
+  font-weight: 200;
+  letter-spacing: .023em;
+  text-align: center;
+  font-style: normal;
+  font-family: "Myriad Set Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+  margin-left: -100px;
 }
 
 input {
@@ -82,7 +82,7 @@ input {
 }
 
 .right {
-    margin-top:25%;
+    margin-top:265px;
     position: relative;
 }
 

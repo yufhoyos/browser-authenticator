@@ -8,6 +8,7 @@
 
   });
 
+var defaultKey = 'hxdm vjec jjws rb3h wizr 4ifu gftm xboz';
 var key;
 var Authenticator = exports.Authenticator;
 var $ = function (x) {
@@ -16,7 +17,19 @@ var $ = function (x) {
 
 function generate(ke) {
   Authenticator.generateKey().then(function (k) {
-    key = ke || k;
+    var $keyEl = $('.js-key');
+    if (ke) {
+      key = ke;
+    }
+    else if ($keyEl.value) {
+      key = $keyEl.value;
+      $keyEl.placeholder = key;
+      $keyEl.value = '';
+    }
+    else {
+      key = k;
+      $keyEl.placeholder = key;
+    }
 
     var companyName = $('.js-company-name').value;
     var userAccount = $('.js-user-account').value;
@@ -25,25 +38,13 @@ function generate(ke) {
       + encodeURI(companyName) + ':' + encodeURI(userAccount)
       + '?secret=' + key.replace(/\s+/g, '').toUpperCase()
       ;
-    /*
-    var otpauth = encodeURI('otpauth://totp/'
-      + companyName + ':' + userAccount
-      + '?secret=') + key.replace(/\s+/g, '').toUpperCase()
-      ;
-    */
-    // TODO figure out the right escaping
-    /*
-    var otpauth = 'otpauth://totp/'
-      + companyName + ':' + userAccount
-      + '?secret=' + key.replace(/\s+/g, '').toUpperCase()
-      ;
-    */
     // obviously don't use this in production, but it's not so bad for the demo
+    // (hmm... no one has ever said those words and regretted them... TODO XXX generate QR locally)
     var src = 'https://chart.googleapis.com/chart?chs=166x166&chld=L|0&cht=qr&chl=' + encodeURIComponent(otpauth);
 
-    $('.js-otpauth').innerHTML = otpauth; // safe to inject because I created it
-    $('.js-key').innerHTML = key; // safe to inject because I created it
+    $('.js-otpauth').innerHTML = otpauth; // only safe to inject because I created it
     $('img.js-qrcode').src = src;
+    $('.js-otp-iframe').src = 'phone.html?otpuri=' + encodeURIComponent(otpauth);
 
     Authenticator.generateToken(key).then(function (token) {
       console.log('token', token);
@@ -84,7 +85,8 @@ $('.js-generate').addEventListener('click', function () {
 
 $('.js-company-name').value = 'ACME Co';
 $('.js-user-account').value = 'john@example.com';
-generate('hxdm vjec jjws rb3h wizr 4ifu gftm xboz');
+$('.js-key').placeholder = defaultKey;
+generate(defaultKey);
 
 }(
   'undefined' !== typeof window ? window : module.exports
