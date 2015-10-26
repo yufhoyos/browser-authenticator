@@ -1,42 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BOTP Test</title>
+    <title>Authenticator - Daplie, Inc</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!--meta name="viewport" content="width=device-width, user-scalable=no" /-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://chart.googleapis.com/ data:; child-src 'self'; object-src 'none'">
+    <link rel="stylesheet" type="text/css" href="bootstrap-v3.3.5.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body>
-    <h1>Authenticator Test</h1>
+  <body class="fade">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6 left">
+          <h1 class="authenticator">Authenticator Test</h1>
+          <img alt="qrcode" class="js-qrcode qrcode" width="166" height="166" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+          <div class="scan">
+            Scan with <a href="https://www.authy.com/personal/mobile/" target="_blank">Authy App</a>
+          </div>
+          <div class="verify">
+            <label class="token-label">Enter Verification Token:</label>
+            <br />
+            <input class="js-token token-input" type="text" placeholder="i.e.  123 456" />
+            <button class="js-verify btn">Verify</button>
+          </div>
+        </div>
 
-    <div>
-      Test with the <a href="https://www.authy.com/personal/mobile/" target="_blank">Authy App</a>.
+        <div class="col-xs-6 right">
+          <img class="iPhone" src="iPhoneMockup.png" />
+          <div class="iframe-container">
+            <iframe class="js-otp-iframe iframe" src="phone.html"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <br />
-    <div>
-      <img alt="qrcode" class="js-qrcode" width="166" height="166" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
-      <p>20-byte (160-bit) Base32 Key:</p>
-      <h3 class="js-key">xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx</h3>
-      <p class="js-otpauth">otpauth://totp/company:user?secret=xxxx</p>
-    </div>
-
-    <br />
-    <div>
-      <label>Company Name:</label>
-      <input class="js-company-name" type="text" placeholder="Company Name" />
-
-      <label>User Account:</label>
-      <input class="js-user-account" type="text" placeholder="User Account" />
-
-      <button class="js-generate">Regenerate</button>
-    </div>
-
-    <br />
-    <div>
-      <label>Verification Token:</label>
-      <input class="js-token" type="text" placeholder="ex: 000 000" />
-
-      <button class="js-verify">Verify</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 bottom">
+          <form class="form-horizontal">
+            <h1 class="console"> Console </h1>
+            <hr />
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Issuer:</label>
+              <div class="col-sm-9">
+                <input type="text" class="js-company-name issuer-input wide" placeholder="Company Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Account:</label>
+              <div class="col-sm-9">
+                <input type="text" class="js-user-account issuer-input wide" placeholder="User Account">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Key:</label>
+              <div class="col-sm-9">
+                <input type="text" class="js-key base-key-input wide">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-6 col-xs-6">
+                <button type="button" class="btn btn-default js-generate regenerate">Regenerate</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">URI:</label>
+              <div class="col-sm-9">
+                <p class="js-otpauth">otpauth://totp/company:user?secret=xxxx&amp;issuer=company</p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
     </div>
 
     <!-- extremely lightweight shim for hex conversion -->
