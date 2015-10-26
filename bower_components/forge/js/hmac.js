@@ -77,8 +77,6 @@ hmac.create = function() {
         }
       }
 
-      console.log('forge key', key);
-
       // if key is longer than blocksize, hash it
       var keylen = key.length();
       if(keylen > _md.blockLength) {

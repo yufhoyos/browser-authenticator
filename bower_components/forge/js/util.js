@@ -1602,7 +1602,14 @@ util.decode64 = function(input) {
  * @return the UTF-8 encoded string.
  */
 util.encodeUtf8 = function(str) {
-  return unescape(encodeURIComponent(str));
+  var escstr = encodeURIComponent(str);
+  // replaces any uri escape sequence, such as %0A,
+  // with binary escape, such as 0x0A
+  var binstr = escstr.replace(/%([0-9A-F]{2})/g, function(match, p1) {
+    return String.fromCharCode(parseInt(p1, 16));
+  });
+
+  return binstr;
 };
 
 /**
@@ -1612,8 +1619,16 @@ util.encodeUtf8 = function(str) {
  *
  * @return the UTF-16 encoded string (standard JavaScript string).
  */
-util.decodeUtf8 = function(str) {
-  return decodeURIComponent(escape(str));
+util.decodeUtf8 = function(binstr) {
+  var escstr = binstr.replace(/(.)/g, function (m, p) {
+    var code = p.charCodeAt(0).toString(16).toUpperCase();
+    if (code.length < 2) {
+      code = '0' + code;
+    }
+    return '%' + code;
+  });
+
+  return decodeURIComponent(escstr);
 };
 
 // binary encoding/decoding tools

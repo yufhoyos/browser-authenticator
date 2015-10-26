@@ -63,6 +63,11 @@ function generate(ke) {
 $('.js-verify').addEventListener('click', function () {
   var token = $('.js-token').value;
 
+  if (!/.*\d{3}.*\d{3}.*/.test(token)) {
+    window.alert("must have a 6 digit token");
+    return;
+  }
+
   Authenticator.verifyToken(key, token).then(function (result) {
     var msg;
     if (result) {
@@ -74,6 +79,9 @@ $('.js-verify').addEventListener('click', function () {
     console.info('verify', msg);
     window.alert(msg);
   }, function (err) {
+    window.alert('[ERROR]:' + err.message);
+    window.alert('[ERROR]:' + err.stack);
+
     console.error('ERROR');
     console.error(err);
   });

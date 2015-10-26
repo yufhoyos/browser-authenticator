@@ -89,7 +89,8 @@
     meta = otplink.pathname.replace(/.*\/totp\//, '').split(':');
     // TODO throw if otp.issuer !== decodeURI(meta[0])
     if (meta.length > 1) {
-      issuer = otp.issuer || decodeURI(meta[0]);
+      // TODO why is there an extra leading '/' on iOS webview?
+      issuer = otp.issuer || decodeURI(meta[0]).replace(/^\//, '');
       accountName = decodeURI(meta[1]);
     }
     else {
@@ -104,6 +105,7 @@
 
     $('.js-issuer').text(issuer);
     $('.js-account-name').text(accountName);
+
     Authenticator.generateToken(otp.secret).then(function (token) {
       $('.js-token').text(token.replace(/(\d{3})/g, '$1 ').trim());
     });
