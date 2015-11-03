@@ -1,1 +1,1 @@
-See test.html / test.js and phone.html / phone.js
+See index.html / demo/demo.js and demo/phone.html / demo/phone.js

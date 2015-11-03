@@ -1,4 +1,4 @@
-// forgive the suckiness, but whatever
+// This is crap demo code. Forgive me.
 (function (exports) {
   'use strict';
 
@@ -44,7 +44,7 @@ function generate(ke) {
 
     $('.js-otpauth').innerHTML = otpauth; // only safe to inject because I created it
     $('img.js-qrcode').src = src;
-    $('.js-otp-iframe').src = 'phone.html?otpuri=' + encodeURIComponent(otpauth);
+    $('.js-otp-iframe').src = 'demo/phone.html?otpuri=' + encodeURIComponent(otpauth);
 
     Authenticator.generateToken(key).then(function (token) {
       console.log('token', token);
