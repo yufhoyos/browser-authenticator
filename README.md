@@ -41,6 +41,11 @@ var authenticator = window.Authenticator;
 authenticator.generateKey().then(function (formattedKey) {
   // "acqo ua72 d3yf a4e5 uorx ztkh j2xl 3wiz"
 
+  authenticator.generateTotpUri(formattedKey, "john.doe@email.com", "ACME Co", 'SHA1', 6, 30);
+  //
+  // otpauth://totp/ACME%20Co:john.doe@email.com?secret=ACQOUA72D3YFA4E5UORXZTKHJ2XL3WIZ&issuer=ACME%20Co&algorithm=SHA1&digits=6&period=30
+
+
   authenticator.generateToken(formattedKey).then(function (formattedToken) {
     // "957 124"
 
@@ -107,6 +112,18 @@ generates a 6-digit (20-bit) decimal time-based token
 validates a time-based token within a +/- 30 second (90 seconds) window
 
 returns `null` on failure or an object such as `{ delta: 0 }` on success
+
+### generateTotpUri(formattedKey, accountName, issuer, algorithm, digits, period)
+
+generates an `OTPAUTH://` scheme URI for QR Code generation.
+
+**OTPAuth Scheme**
+
+* <https://github.com/google/google-authenticator/wiki/Key-Uri-Format>
+* `otpauth://totp/<<ISSUER>>:<<ACCOUNT_NAME>>?secret=<<BASE32_KEY>>&issuer=<<ISSUER>>`
+* `otpauth://totp/<<ISSUER>>:<<ACCOUNT_NAME>>?secret=<<BASE32_KEY>>&issuer=<<ISSUER>>&algorithm=<<ALGO>>&digits=<<INT>>&period=<<SECONDS>>`
+
+Note that `ISSUER` is specified twice for backwards / forwards compatibility.
 
 QR Code
 -------
